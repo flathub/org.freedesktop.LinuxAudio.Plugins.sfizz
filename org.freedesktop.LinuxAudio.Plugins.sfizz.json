@@ -54,9 +54,10 @@
             ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://github.com/sfztools/sfizz/releases/download/0.3.2/sfizz-0.3.2-src.tar.gz",
-                    "sha256": "30448691ab35b1d7307db831c8a74e191ac40f7dd2d583798ad836f6436a3e33"
+                    "type": "git",
+                    "url": "https://github.com/sfztools/sfizz.git",
+                    "tag": "0.4.0",
+                    "commit": "65580beadb79263da533263066dc66a2f090b643"
                 },
                 {
                     "type": "patch",

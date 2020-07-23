@@ -9,6 +9,7 @@
     <update_contact>hub_AT_figuiere.net</update_contact>
     <url type="homepage">https://sfz.tools/sfizz/</url>
     <releases>
+        <release version="0.4.0" date="2020-07-23" />
         <release version="0.3.2" date="2020-04-02" />
     </releases>
 </component>
