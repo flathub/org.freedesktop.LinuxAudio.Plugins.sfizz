@@ -62,6 +62,42 @@
                     "disable-fsckobjects": true
                 },
                 {
+                    "type": "git",
+                    "url": "https://github.com/abseil/abseil-cpp",
+                    "commit": "c51510d1d87ebce8615ae1752fd5aca912f6cf4c",
+                    "disable-shallow-clone": true,
+                    "disable-fsckobjects": true,
+                    "path": "external/abseil-cpp"
+                },
+                {
+                    "type": "git",
+                    "url": "https://github.com/steinbergmedia/vst3_base.git",
+                    "commit": "4f6a7184f20f40a7c940a6717e6e0d8b35eeea63",
+                    "disable-shallow-clone": true,
+                    "path": "vst/external/VST_SDK/VST3_SDK/base"
+                },
+                {
+                    "type": "git",
+                    "url": "https://github.com/sfztools/vst3_pluginterfaces.git",
+                    "commit": "8c07a58d84c544a73e1ccad2efae200505796773",
+                    "disable-shallow-clone": true,
+                    "path": "vst/external/VST_SDK/VST3_SDK/pluginterfaces"
+                },
+                {
+                    "type": "git",
+                    "url": "https://github.com/sfztools/vst3_public_sdk.git",
+                    "commit": "ff836e8c02bd28c902f5e3e75353a86f65008a77",
+                    "disable-shallow-clone": true,
+                    "path": "vst/external/VST_SDK/VST3_SDK/public.sdk"
+                },
+                {
+                    "type": "git",
+                    "url": "https://github.com/sfztools/vstgui.git",
+                    "commit": "c6a7f607c21a7353e922a6d45e54d6c56d5a6745",
+                    "disable-shallow-clone": true,
+                    "path": "vst/external/VST_SDK/VST3_SDK/vstgui4"
+                },
+                {
                     "type": "patch",
                     "path": "sfizz-lv2.patch"
                 },
