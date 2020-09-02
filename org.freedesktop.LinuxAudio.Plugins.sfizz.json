@@ -54,10 +54,9 @@
             ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://github.com/sfztools/sfizz.git",
-                    "tag": "0.4.0",
-                    "commit": "65580beadb79263da533263066dc66a2f090b643"
+                    "type": "archive",
+                    "url": "https://github.com/sfztools/sfizz/releases/download/0.4.0/sfizz-0.4.0-src.tar.gz",
+                    "sha256": "ad769bab42b733ad71479f14acd1c1937d4434130d00a630fffa4d8a407900ac"
                 },
                 {
                     "type": "patch",
