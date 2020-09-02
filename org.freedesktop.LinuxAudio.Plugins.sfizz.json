@@ -57,7 +57,9 @@
                     "type": "git",
                     "url": "https://github.com/sfztools/sfizz.git",
                     "tag": "0.4.0",
-                    "commit": "65580beadb79263da533263066dc66a2f090b643"
+                    "commit": "65580beadb79263da533263066dc66a2f090b643",
+                    "disable-shallow-clone": true,
+                    "disable-fsckobjects": true
                 },
                 {
                     "type": "patch",
