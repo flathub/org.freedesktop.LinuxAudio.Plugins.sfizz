@@ -59,11 +59,13 @@
                     "tag": "0.4.0",
                     "commit": "65580beadb79263da533263066dc66a2f090b643",
                     "disable-shallow-clone": true,
+                    "disable-submodules": true,
                     "disable-fsckobjects": true
                 },
                 {
                     "type": "git",
                     "url": "https://github.com/abseil/abseil-cpp",
+                    "tag": "20200225.2",
                     "commit": "c51510d1d87ebce8615ae1752fd5aca912f6cf4c",
                     "disable-shallow-clone": true,
                     "disable-fsckobjects": true,
