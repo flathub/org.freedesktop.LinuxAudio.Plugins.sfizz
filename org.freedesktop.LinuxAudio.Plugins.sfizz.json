@@ -41,12 +41,13 @@
                 "-DCMAKE_BUILD_TYPE=Release"
             ],
             "cleanup": [
+                "/bin",
                 "*.a",
                 "/lib/pkgconfig",
                 "/include"
             ],
             "post_install": [
-                "strip ${FLATPAK_DEST}/lv2/*.lv2/*.so",
+                "strip ${FLATPAK_DEST}/lv2/*.lv2/Contents/Binary/*.so",
                 "test ${FLATPAK_ARCH} != 'arm' && strip ${FLATPAK_DEST}/vst3/*.vst3/Contents/*/*.so",
                 "install -Dm644 -t $FLATPAK_DEST/share/licenses/sfizz LICENSE.md",
                 "install -Dm644 --target-directory=${FLATPAK_DEST}/share/metainfo org.freedesktop.LinuxAudio.Plugins.sfizz.metainfo.xml",
@@ -55,8 +56,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/sfztools/sfizz/releases/download/0.4.0/sfizz-0.4.0-src.tar.gz",
-                    "sha256": "ad769bab42b733ad71479f14acd1c1937d4434130d00a630fffa4d8a407900ac"
+                    "url": "https://github.com/sfztools/sfizz/releases/download/0.5.0/sfizz-0.5.0-src.tar.gz",
+                    "sha256": "ede54251c2cde1139f1232ba2220f40efe3ed9260a023dae3a8ffd2207c65d1a"
                 },
                 {
                     "type": "patch",
