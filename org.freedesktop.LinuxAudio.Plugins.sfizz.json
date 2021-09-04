@@ -64,6 +64,10 @@
                     "path": "sfizz-lv2.patch"
                 },
                 {
+                    "type": "patch",
+                    "path": "sfizz-build.patch"
+                },
+                {
                     "type": "file",
                     "path": "org.freedesktop.LinuxAudio.Plugins.sfizz.metainfo.xml"
                 }
