@@ -49,23 +49,19 @@
             "post_install": [
                 "strip ${FLATPAK_DEST}/lv2/*.lv2/Contents/Binary/*.so",
                 "test ${FLATPAK_ARCH} != 'arm' && strip ${FLATPAK_DEST}/vst3/*.vst3/Contents/*/*.so",
-                "install -Dm644 -t $FLATPAK_DEST/share/licenses/sfizz LICENSE.md",
+                "install -Dm644 -t $FLATPAK_DEST/share/licenses/sfizz LICENSE",
                 "install -Dm644 --target-directory=${FLATPAK_DEST}/share/metainfo org.freedesktop.LinuxAudio.Plugins.sfizz.metainfo.xml",
                 "appstream-compose --basename=org.freedesktop.LinuxAudio.Plugins.sfizz --prefix=${FLATPAK_DEST} --origin=flatpak org.freedesktop.LinuxAudio.Plugins.sfizz"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/sfztools/sfizz/releases/download/1.0.0/sfizz-1.0.0.tar.gz",
-                    "sha256": "349036e91b38f2ea0dd4abd08de8de6d3b5bc12e72c182c597704fec773f66de"
+                    "url": "https://github.com/sfztools/sfizz/releases/download/1.1.0/sfizz-1.1.0.tar.gz",
+                    "sha256": "6f9767a7b911eb441d04fd9809dd5b1a6b9ba62a7456957b075af882418905ee"
                 },
                 {
                     "type": "patch",
                     "path": "sfizz-lv2.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "sfizz-build.patch"
                 },
                 {
                     "type": "file",
