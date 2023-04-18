@@ -51,8 +51,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/sfztools/sfizz/releases/download/1.2.0/sfizz-1.2.0.tar.gz",
-                    "sha256": "5c26eb43aba84c848583358ee86c552a136bee14a002442c86fca8636f1b59f3"
+                    "url": "https://github.com/sfztools/sfizz/releases/download/1.2.1/sfizz-1.2.1.tar.gz",
+                    "sha256": "5a4af23b2a4f1646aaa208d1e71adcf1e706dd6375c4e898b6e49592d85ac298"
                 },
                 {
                     "type": "patch",
