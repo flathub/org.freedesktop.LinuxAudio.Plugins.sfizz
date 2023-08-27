@@ -1,0 +1,30 @@
+diff --git a/cmake/LV2Config.cmake b/cmake/LV2Config.cmake
+index b6cc28c..1c4b48c 100644
+--- a/cmake/LV2Config.cmake
++++ b/cmake/LV2Config.cmake
+@@ -41,8 +41,8 @@ elseif(MSVC)
+     set(LV2_PLUGIN_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/lv2" CACHE STRING
+     "Install destination for LV2 bundle [default: ${CMAKE_INSTALL_PREFIX}/lv2]")
+ else()
+-    set(LV2_PLUGIN_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/lib/lv2" CACHE STRING
+-    "Install destination for LV2 bundle [default: ${CMAKE_INSTALL_PREFIX}/lib/lv2]")
++    set(LV2_PLUGIN_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/lv2" CACHE STRING
++    "Install destination for LV2 bundle [default: ${CMAKE_INSTALL_PREFIX}/lv2]")
+ endif()
+ 
+ include(StringUtility)
+diff --git a/cmake/VSTConfig.cmake b/cmake/VSTConfig.cmake
+index b72f824..1a38d72 100644
+--- a/cmake/VSTConfig.cmake
++++ b/cmake/VSTConfig.cmake
+@@ -18,8 +18,8 @@ elseif(MSVC)
+     set(VST3_PLUGIN_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/vst3" CACHE STRING
+     "Install destination for VST bundle [default: ${CMAKE_INSTALL_PREFIX}/vst3]")
+ else()
+-    set(VST3_PLUGIN_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/lib/vst3" CACHE STRING
+-    "Install destination for VST bundle [default: ${CMAKE_INSTALL_PREFIX}/lib/vst3]")
++    set(VST3_PLUGIN_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/vst3" CACHE STRING
++    "Install destination for VST bundle [default: ${CMAKE_INSTALL_PREFIX}/vst3]")
+ endif()
+ 
+ if(NOT VST3_SYSTEM_PROCESSOR)
