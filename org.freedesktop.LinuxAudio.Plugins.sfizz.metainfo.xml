@@ -9,6 +9,26 @@
   <update_contact>hub_AT_figuiere.net</update_contact>
   <url type="homepage">https://sfz.tools/sfizz/</url>
   <releases>
+    <release version="1.2.2" date="2023-08-26">
+      <url>https://github.com/sfztools/sfizz/releases/tag/1.2.2</url>
+      <description>
+        <p>Added</p>
+        <ul>
+          <li>WavPack support (#1129 by @lucianoiam)</li>
+        </ul>
+        <p>Changed</p>
+        <ul>
+          <li>The project has been split into 2 repositories to
+          separate the library from the UI/plugins. (#1162)</li>
+          <li>Unclamp the cutoff and add OSC queries for the cutoff
+          modifiers (#1100 by @PythonBlue)</li>
+          <li>Update cpuid, dr_libs and stb_vorbis libraries
+          (#1164)</li>
+          <li>Configurable amount of Control Change messages via
+          CMake' MIDI_CC_COUNT variable,</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.1" date="2023-04-14">
       <url>https://github.com/sfztools/sfizz/releases/tag/1.2.1</url>
     </release>
@@ -17,148 +37,154 @@
     <release version="1.1.0" date="2021-10-23" />
     <release version="1.0.0" date="2021-04-16" />
     <release version="0.5.1" date="2020-10-25">
-      <ul>
-        <li>Corrected race conditions that appeared with the new
-        thread and file pools (#507 #508 #514 #521)</li>
-        <li>Take the internal oversampling factor into account for
-        loop points, and solve an issue where loop points specified in
-        sfz files were not taken into account (#506)</li>
-        <li>Fix an implementation error for the internal hash function
-        when applied on a single byte (#512)</li>
-        <li>Knobs are linear in the AU plugin (#517)</li>
-        <li>Fix a crash in VSTGUI (#520)</li>
-      </ul>
+      <description>
+        <ul>
+          <li>Corrected race conditions that appeared with the new
+          thread and file pools (#507 #508 #514 #521)</li>
+          <li>Take the internal oversampling factor into account for
+          loop points, and solve an issue where loop points specified
+          in sfz files were not taken into account (#506)</li>
+          <li>Fix an implementation error for the internal hash
+          function when applied on a single byte (#512)</li>
+          <li>Knobs are linear in the AU plugin (#517)</li>
+          <li>Fix a crash in VSTGUI (#520)</li>
+        </ul>
+      </description>
     </release>
     <release version="0.5.0" date="2020-10-15">
-      <p>Big stuff:</p>
-      <ul>
-        <li>Added basic support for Flex EGs (#388) as modulation
-        sources (targets to come)</li>
-        <li>Added basic support for LFOs (#338) as modulation
-        sources (targets to come)</li>
-        <li>EGs and LFOs can now target EQs and filters (#424)</li>
-        <li>A new GUI has been added and is common to the LV2 and
-        VST plugin (#397 #404 #419 #489 #492 #495 #496 #497);
-        still mostly work in progress, more to come!</li>
-        <li>Provided build systems to use sfizz with the VCV-Rack
-        SDK and the DISTRHO Plugin Framework</li>
-      </ul>
-      <p>New features:</p>
-      <ul>
-        <li>Added support for sustain_lo (#327)</li>
-        <li>Audio files are now read incrementally, improving the
-        availability under load (#294)</li>
-        <li>A new output port for active voices has been added in
-        the LV2 plugin (#321)</li>
-        <li>Added support for effect types reverb, disto, gate and
-        comp</li>
-        <li>The voice stealing is now configurable using
-        hint_stealing, with possible values as first, oldest
-        (default), and envelope_and_age. The latter is the more
-        CPU-consuming version which requires to follow the
-        envelope of each voice to kill low-volume ones
-        preferably. Note that the voice stealing continue to kill
-        all voices started on the same event by default (i.e. all
-        layers of the same note). (#344 #384 #353)</li>
-        <li>sfizz now internally uses a modulation matrix to link
-        all modulation sources (CC, LFOs, and EGs) and targets
-        (#335 #351 #386)</li>
-        <li>Added support for off_time and complete support for
-        off_mode. The voice stealing logic was improved to take
-        into account polyphony, note_polyphony and group_polyphony
-        properly (#349 #352 #393 #413 #414 #467). Note that this
-        support is also available for the engine polyphony. In
-        this case, some additional voice will take over for the
-        release duration (#477).</li>
-        <li>The wavetable quality has been improved (#347)</li>
-        <li>Support for offset_cc (#385)</li>
-        <li>sfizz_render now supports a --quality switch, which
-        acts like the sample_quality= opcode (#408)</li>
-        <li>pitch_keycenter=sample is now taken into account
-        (#362)</li>
-        <li>Support oscillator_detunecc (#434)</li>
-        <li>Support basic FM synthesis for oscillator regions
-        (#436)</li>
-        <li>CC 7, 10 and 11 are now linked by default to pan,
-        volume and expression (#475)</li>
-        <li>Support hint_ram_loading for loading the whole samples
-        in RAM (#353)</li>
-        <li>Support for loop_crossfade (#464)</li>
-        <li>All phase-related opcodes in sfizz now use the 0->1
-        convention, as does ARIA/Sforzando, instead of the 0->360
-        convention (#499)</li>
-      </ul>
-      <p>Issues:</p>
-      <ul>
-        <li>Loading probable wavetable files, or wav files
-        containing wavetable metadata now sets oscillator=on on
-        the region (#431)</li>
-        <li>The default sample_quality was put back to 1 for live
-        playing and 2 for freewheeling (#405)</li>
-        <li>Fix an unwanted copy in the realtime thread
-        (#334)</li>
-        <li>Improve the filter shortcut path (#336)</li>
-        <li>Fix the default ampeg_attack and ampeg_release to
-        avoid clicks (#437)</li>
-        <li>Corrected a race condition in freewheeling mode (#500)</li>
-        <li>Fixed a potential non-realtime operation in the realtime thread (#498)</li>
-        <li>Fix a bug when using a larger internal oversampling
-        for regions with an offset value (#469)</li>
-        <li>Fix an issue when loops occured more than once in a
-        block (#462)</li>
-        <li>Increase the range of the clamping on amplitude (#468)
-        and pitch (#474)</li>
-        <li>Fix CC modulations with their source depth set to 0
-        (#475)</li>
-        <li>Fix an overshoot for crazily large cutoff values
-        (#478); cutoffs are now clamped</li>
-        <li>Improve the file loading logic to keep files in memory
-        for a short while in case they get reused (#425)</li>
-        <li>Fix the MIDNAM output for the case where extended CCs
-        are used (#420)</li>
-        <li>Fixed a bug where release voices where not ignored on
-        self-mask search (#348)</li>
-        <li>Improved the release logic in many cases (#324 #414
-        #413)</li>
-        <li>Set the level of the *noise generator to match ARIA's
-        (#429)</li>
-        <li>Support for atom:Blank atoms in the LV2 plugin
-        (#363)</li>
-        <li>Fixed amp_veltrack behavior (#371)</li>
-        <li>Fix the ADSRH envelope release rate (#376)</li>
-        <li>Fixed an error for files where the loop spans the
-        entire file (#378)</li>
-        <li>Fixed sustain_cc behavior (#377)</li>
-        <li>Match the default volumes with ARIA (#381)</li>
-        <li>Properly set the loop_mode for release regions
-        (#379)</li>
-        <li>Regions with end=0 are now properly disabled
-        (#380)</li>
-        <li>Fix fil_random to be bipolar (#452)</li>
-        <li>The sequence order now properly starts at 1 (#451)</li>
-        <li>Fix an issue on Flush to Zero on some ARM platforms
-        (#455)</li>
-        <li>Fix pitch_veltrack (#461)</li>
-        <li>Opcode values now properly stop at the &lt; character
-        (#439)</li>
-        <li>Fix various build errors and issues on all platforms
-        (#345 #401 #400 #399 #417 #447 #449 #443 #453 #456 #459
-        #471 #484 #487 #488 #491)</li>
-        <li>The file dialog initial directory is now the root of
-        the current loaded file (#428)</li>
-        <li>Existing and known CC values are now correctly taken
-        into account for modulations (#421)</li>
-        <li>Fix various performance regressions and improved
-        performance especially on ARM builds (#410 #412 #415
-        #426)</li>
-      </ul>
-      <p>API changes:</p>
-      <ul>
-        <li>Added API support for setting the playback state, time
-        position and signature (#354)</li>
-        <li>The API documentation on the sfizz's website has been
-        streamlined alot !</li>
-      </ul>
+      <description>
+        <p>Big stuff:</p>
+        <ul>
+          <li>Added basic support for Flex EGs (#388) as modulation
+          sources (targets to come)</li>
+          <li>Added basic support for LFOs (#338) as modulation
+          sources (targets to come)</li>
+          <li>EGs and LFOs can now target EQs and filters (#424)</li>
+          <li>A new GUI has been added and is common to the LV2 and
+          VST plugin (#397 #404 #419 #489 #492 #495 #496 #497); still
+          mostly work in progress, more to come!</li>
+          <li>Provided build systems to use sfizz with the VCV-Rack
+          SDK and the DISTRHO Plugin Framework</li>
+        </ul>
+        <p>New features:</p>
+        <ul>
+          <li>Added support for sustain_lo (#327)</li>
+          <li>Audio files are now read incrementally, improving the
+          availability under load (#294)</li>
+          <li>A new output port for active voices has been added in
+          the LV2 plugin (#321)</li>
+          <li>Added support for effect types reverb, disto, gate and
+          comp</li>
+          <li>The voice stealing is now configurable using
+          hint_stealing, with possible values as first, oldest
+          (default), and envelope_and_age. The latter is the more
+          CPU-consuming version which requires to follow the envelope
+          of each voice to kill low-volume ones preferably. Note that
+          the voice stealing continue to kill all voices started on
+          the same event by default (i.e. all layers of the same
+          note). (#344 #384 #353)</li>
+          <li>sfizz now internally uses a modulation matrix to link
+          all modulation sources (CC, LFOs, and EGs) and targets (#335
+          #351 #386)</li>
+          <li>Added support for off_time and complete support for
+          off_mode. The voice stealing logic was improved to take into
+          account polyphony, note_polyphony and group_polyphony
+          properly (#349 #352 #393 #413 #414 #467). Note that this
+          support is also available for the engine polyphony. In this
+          case, some additional voice will take over for the release
+          duration (#477).</li>
+          <li>The wavetable quality has been improved (#347)</li>
+          <li>Support for offset_cc (#385)</li>
+          <li>sfizz_render now supports a --quality switch, which
+          acts like the sample_quality= opcode (#408)</li>
+          <li>pitch_keycenter=sample is now taken into account
+          (#362)</li>
+          <li>Support oscillator_detunecc (#434)</li>
+          <li>Support basic FM synthesis for oscillator regions
+          (#436)</li>
+          <li>CC 7, 10 and 11 are now linked by default to pan,
+          volume and expression (#475)</li>
+          <li>Support hint_ram_loading for loading the whole samples
+          in RAM (#353)</li>
+          <li>Support for loop_crossfade (#464)</li>
+          <li>All phase-related opcodes in sfizz now use the 0->1
+          convention, as does ARIA/Sforzando, instead of the 0->360
+          convention (#499)</li>
+        </ul>
+        <p>Issues:</p>
+        <ul>
+          <li>Loading probable wavetable files, or wav files
+          containing wavetable metadata now sets oscillator=on on the
+          region (#431)</li>
+          <li>The default sample_quality was put back to 1 for live
+          playing and 2 for freewheeling (#405)</li>
+          <li>Fix an unwanted copy in the realtime thread
+          (#334)</li>
+          <li>Improve the filter shortcut path (#336)</li>
+          <li>Fix the default ampeg_attack and ampeg_release to
+          avoid clicks (#437)</li>
+          <li>Corrected a race condition in freewheeling mode
+          (#500)</li>
+          <li>Fixed a potential non-realtime operation in the realtime
+          thread (#498)</li>
+          <li>Fix a bug when using a larger internal oversampling
+          for regions with an offset value (#469)</li>
+          <li>Fix an issue when loops occured more than once in a
+          block (#462)</li>
+          <li>Increase the range of the clamping on amplitude (#468)
+          and pitch (#474)</li>
+          <li>Fix CC modulations with their source depth set to 0
+          (#475)</li>
+          <li>Fix an overshoot for crazily large cutoff values
+          (#478); cutoffs are now clamped</li>
+          <li>Improve the file loading logic to keep files in memory
+          for a short while in case they get reused (#425)</li>
+          <li>Fix the MIDNAM output for the case where extended CCs
+          are used (#420)</li>
+          <li>Fixed a bug where release voices where not ignored on
+          self-mask search (#348)</li>
+          <li>Improved the release logic in many cases (#324 #414
+          #413)</li>
+          <li>Set the level of the *noise generator to match ARIA's
+          (#429)</li>
+          <li>Support for atom:Blank atoms in the LV2 plugin
+          (#363)</li>
+          <li>Fixed amp_veltrack behavior (#371)</li>
+          <li>Fix the ADSRH envelope release rate (#376)</li>
+          <li>Fixed an error for files where the loop spans the entire
+          file (#378)</li>
+          <li>Fixed sustain_cc behavior (#377)</li>
+          <li>Match the default volumes with ARIA (#381)</li>
+          <li>Properly set the loop_mode for release regions
+          (#379)</li>
+          <li>Regions with end=0 are now properly disabled
+          (#380)</li>
+          <li>Fix fil_random to be bipolar (#452)</li>
+          <li>The sequence order now properly starts at 1 (#451)</li>
+          <li>Fix an issue on Flush to Zero on some ARM platforms
+          (#455)</li>
+          <li>Fix pitch_veltrack (#461)</li>
+          <li>Opcode values now
+          properly stop at the &lt; character (#439)</li>
+          <li>Fix various build errors and issues on all platforms
+          (#345 #401 #400 #399 #417 #447 #449 #443 #453 #456 #459 #471
+          #484 #487 #488 #491)</li>
+          <li>The file dialog initial directory is now the root of the
+          current loaded file (#428)</li>
+          <li>Existing and known CC values are now correctly taken
+          into account for modulations (#421)</li>
+          <li>Fix various performance regressions and improved
+          performance especially on ARM builds (#410 #412 #415
+          #426)</li>
+        </ul>
+        <p>API changes:</p>
+        <ul>
+          <li>Added API support for setting the playback state, time
+          position and signature (#354)</li>
+          <li>The API documentation on the sfizz's website has been
+          streamlined alot !</li>
+        </ul>
+      </description>
     </release>
     <release version="0.4.0" date="2020-07-23" />
     <release version="0.3.2" date="2020-04-02" />

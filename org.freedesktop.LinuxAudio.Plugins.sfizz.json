@@ -13,25 +13,10 @@
         {
             "name": "sfizz",
             "buildsystem": "cmake-ninja",
-            "build-options": {
-                "arch": {
-                    "x86_64": {
-                        "config-opts": [
-                            "-DSFIZZ_VST=ON"
-                        ]
-                    },
-                    "aarch64": {
-                        "config-opts": [
-                            "-DSFIZZ_VST=ON"
-                        ]
-                    }
-                }
-            },
             "config-opts": [
                 "-DSFIZZ_JACK=OFF",
                 "-DSFIZZ_BENCHMARKS=OFF",
                 "-DSFIZZ_TESTS=OFF",
-                "-DSFIZZ_LV2=ON",
                 "-DSFIZZ_SHARED=OFF",
                 "-DCMAKE_BUILD_TYPE=Release"
             ],
@@ -45,18 +30,18 @@
                 "strip ${FLATPAK_DEST}/lv2/*.lv2/Contents/Binary/*.so",
                 "test ${FLATPAK_ARCH} != 'arm' && strip ${FLATPAK_DEST}/vst3/*.vst3/Contents/*/*.so",
                 "install -Dm644 -t $FLATPAK_DEST/share/licenses/sfizz LICENSE",
-                "install -Dm644 --target-directory=${FLATPAK_DEST}/share/metainfo org.freedesktop.LinuxAudio.Plugins.sfizz.metainfo.xml",
-                "appstream-compose --basename=org.freedesktop.LinuxAudio.Plugins.sfizz --prefix=${FLATPAK_DEST} --origin=flatpak org.freedesktop.LinuxAudio.Plugins.sfizz"
+                "install -Dm644 org.freedesktop.LinuxAudio.Plugins.sfizz.metainfo.xml --t=${FLATPAK_DEST}/share/metainfo",
+              "appstream-compose --basename=${FLATPAK_ID} --prefix=${FLATPAK_DEST} --origin=flatpak ${FLATPAK_ID}"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/sfztools/sfizz/releases/download/1.2.1/sfizz-1.2.1.tar.gz",
-                    "sha256": "5a4af23b2a4f1646aaa208d1e71adcf1e706dd6375c4e898b6e49592d85ac298"
+                    "url": "https://github.com/sfztools/sfizz-ui/releases/download/1.2.2/sfizz-1.2.2.tar.gz",
+                    "sha256": "815a825572751d01bc0f1bfc559e121dc8750c7147c6dc58051a0406c02a5287"
                 },
                 {
                     "type": "patch",
-                    "path": "sfizz-lv2.patch"
+                    "path": "patches/sfizz-plugindir.patch"
                 },
                 {
                     "type": "file",
