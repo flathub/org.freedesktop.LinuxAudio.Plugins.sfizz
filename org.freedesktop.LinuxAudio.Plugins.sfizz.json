@@ -1,11 +1,10 @@
 {
     "id": "org.freedesktop.LinuxAudio.Plugins.sfizz",
     "runtime": "org.freedesktop.LinuxAudio.BaseExtension",
-    "sdk": "org.freedesktop.Sdk//23.08",
+    "sdk": "org.freedesktop.Sdk//24.08",
     "runtime-version": "stable",
     "build-extension": true,
-    "appstream-compose": false,
-    "branch": "23.08",
+    "branch": "24.08",
     "build-options": {
         "prefix": "/app/extensions/Plugins/sfizz"
     },
@@ -30,8 +29,7 @@
                 "strip ${FLATPAK_DEST}/lv2/*.lv2/Contents/Binary/*.so",
                 "strip ${FLATPAK_DEST}/vst3/*.vst3/Contents/*/*.so",
                 "install -Dm644 -t $FLATPAK_DEST/share/licenses/sfizz LICENSE",
-                "install -Dm644 org.freedesktop.LinuxAudio.Plugins.sfizz.metainfo.xml --t=${FLATPAK_DEST}/share/metainfo",
-              "appstream-compose --basename=${FLATPAK_ID} --prefix=${FLATPAK_DEST} --origin=flatpak ${FLATPAK_ID}"
+                "install -Dm644 org.freedesktop.LinuxAudio.Plugins.sfizz.metainfo.xml --t=${FLATPAK_DEST}/share/metainfo"
             ],
             "sources": [
                 {
@@ -41,7 +39,10 @@
                 },
                 {
                     "type": "patch",
-                    "path": "patches/sfizz-plugindir.patch"
+                    "paths": [
+                        "patches/sfizz-plugindir.patch",
+                        "patches/sfizz-vstgui.patch"
+                    ]
                 },
                 {
                     "type": "file",
